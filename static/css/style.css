@@ -1,0 +1,74 @@
+:root {
+  --background-color: #f7fafc;
+  --secondary-color: #219ebc;
+  --tertiary-color: #48cae4;
+}
+
+@font-face {
+  font-family: "SF-Pro-Regular";
+  src: url("/static/assets/SF-Pro-Display-Regular.otf");
+}
+
+@font-face {
+  font-family: "SF-Pro-Medium";
+  src: url("/static/assets/SF-Pro-Display-Medium.otf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background-color);
+  font-family: SF-Pro-Regular, sans-serif;
+}
+
+.head-txt {
+  text-align: center;
+}
+
+.query-input {
+  width: 20rem;
+  height: 2.5rem;
+  font-size: 1.2rem;
+  padding: 0 1rem;
+}
+
+.user-form {
+  text-align: center;
+}
+
+.submit-btn {
+  height: 2.5rem;
+  width: 7rem;
+  font-size: 1.2rem;
+  margin: 2rem;
+  background-color: var(--secondary-color);
+  border: none;
+  border-radius: 15px;
+}
+
+.submit-btn:hover {
+  background-color: var(var(--tertiary-color));
+}
+
+.clear-btn {
+  height: 2.5rem;
+  width: 7rem;
+  font-size: 1.2rem;
+  background-color: var(--background-color);
+  margin: 2rem;
+  border: 2px solid var(--secondary-color);
+  border-radius: 15px;
+}
+
+.clear-btn:hover {
+  background-color: var(--secondary-color);
+}
+
+.img-wrapper {
+  width: 100vw;
+  text-align: center;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Automata Theory</title>
+    <link rel="icon" type="image/ico" href="../static/images/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body>
+    <h1 class="head-txt">Welcome to the Automata Theory Tutoring System</h1>
+    <form class="user-form" action="/" method="post">
+      <br />
+      <input
+        class="query-input charset"
+        type="text"
+        name="charset"
+        placeholder="Enter your character set"
+        value="{{ request.form['charset'] }}"
+        maxlength="15"
+      />
+      <br />
+      <br />
+      <input
+        class="query-input query"
+        type="text"
+        name="query"
+        placeholder="Enter your query"
+        value="{{ request.form['query'] }}"
+        maxlength="80"
+      />
+      <br />
+
+      <button class="submit-btn" type="submit">Submit</button>
+      <button class="clear-btn" type="button" onclick="clearInputs()">
+        Clear
+      </button>
+      <br />
+      <h3 class="head-txt">
+        This is the generated JSON:<br />
+        {{dfaJson}}
+      </h3>
+      <br />
+      <div class="img-wrapper">
+        <img class="dfa-img" src="{{imgUrl}}" alt="" />
+      </div>
+    </form>
+  </body>
+  <script src="{{url_for('static', filename='javascript/index.js')}}"></script>
+</html>
