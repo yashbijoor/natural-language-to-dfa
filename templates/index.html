@@ -45,7 +45,9 @@
       </h3>
       <br />
       <div class="img-wrapper">
-        <img class="dfa-img" src="{{imgUrl}}" alt="" />
+        {% for image in imgUrls %}
+        <img class="dfa-img" src="{{image}}" alt="" /><br />
+        {% endfor %}
       </div>
     </form>
   </body>

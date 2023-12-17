@@ -10,5 +10,5 @@ def re_to_dfa(charset, regex):
     rgx=infix_to_postfix(add_concat(supercharge(regex)))
     tree=SyntaxTree(rgx)
     dfa=DfaBuilder().from_syntax_tree(tree)
-    base64_dfa = visualize(charset, dfa)
+    base64_dfa = visualize(dfa)
     return dfa, base64_dfa
