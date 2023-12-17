@@ -51,7 +51,7 @@ body {
 }
 
 .submit-btn:hover {
-  background-color: var(var(--tertiary-color));
+  background-color: var(--tertiary-color);
 }
 
 .clear-btn {

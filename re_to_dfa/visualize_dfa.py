@@ -2,17 +2,12 @@ from graphviz import Digraph
 import base64
 
 class DFA:
-	def __init__(self, no_state, states, no_alphabet, alphabets, start,
-				no_final, finals, no_transition, transitions):
+	def __init__(self, no_state, states, no_alphabet, alphabets, start, no_final, finals, no_transition, transitions):
 		self.no_state = no_state
 		self.states = states
 		self.no_alphabet = no_alphabet
 		self.alphabets = alphabets
 		
-		# Adding epsilon alphabet to the list
-		# and incrementing the alphabet count
-		# self.alphabets.append('e')
-		# self.no_alphabet += 1
 		self.start = start
 		self.no_final = no_final
 		self.finals = finals
@@ -29,16 +24,12 @@ class DFA:
 			self.alphabets_dict[self.alphabets[i]] = i
 			
 		# transition table is of the form
-		# [From State + Alphabet pair] -> [Set of To States]
 		self.transition_table = dict()
 		for i in range(self.no_state):
 			for j in range(self.no_alphabet):
 				self.transition_table[str(i)+str(j)] = []
 		for i in range(self.no_transition):
-			self.transition_table[str(self.states_dict[self.transitions[i][0]])
-								+ str(self.alphabets_dict[
-									self.transitions[i][1]])].append(
-										self.states_dict[self.transitions[i][2]])
+			self.transition_table[str(self.states_dict[self.transitions[i][0]]) + str(self.alphabets_dict[ self.transitions[i][1]])].append(self.states_dict[self.transitions[i][2]])
 			
 
 def visualize(charset, dfa):
