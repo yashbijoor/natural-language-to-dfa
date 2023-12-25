@@ -7,10 +7,26 @@
     <link rel="icon" type="image/ico" href="../static/images/favicon.ico" />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/style.css') }}"
+      href="{{ url_for('static', filename='css/nav.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/index.css') }}"
     />
   </head>
   <body>
+    <nav class="navbar">
+      <div class="logo">AutoDFA</div>
+      <div class="nav-links">
+        <ul class="nav-list">
+          <li><a class="active-link" href="/">Home</a></li>
+          <li>
+            <a class="unactive-link" href="/info">What is Automata Theory?</a>
+          </li>
+          <li><a class="unactive-link" href="/help">How To Use?</a></li>
+        </ul>
+      </div>
+    </nav>
     <h1 class="head-txt">Welcome to the Automata Theory Tutoring System</h1>
     <form class="user-form" action="/" method="post">
       <br />

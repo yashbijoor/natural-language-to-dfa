@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Automata Theory</title>
+    <link rel="icon" type="image/ico" href="../static/images/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/nav.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/info.css') }}"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">AutoDFA</div>
+      <div class="nav-links">
+        <ul class="nav-list">
+          <li><a class="unactive-link" href="/">Home</a></li>
+          <li>
+            <a class="active-link" href="/info">What is Automata Theory?</a>
+          </li>
+          <li><a class="unactive-link" href="/help">How To Use?</a></li>
+        </ul>
+      </div>
+    </nav>
+    <section class="main-content">
+      <h1>What is Automata Theory?</h1>
+      <br />
+      <p>
+        Automata theory is a theoretical branch of computer science. It studies
+        abstract mathematical machines called automatons. When given a finite
+        set of inputs, these automatons automatically imitate humans performing
+        tasks by going through a finite sequence of states. <br /><br />
+        Through these automatons, mathematicians and computer scientists can
+        understand how machines function, solve problem, learn and what it means
+        for a function to be defined as computable. Along with this, we can also
+        understand how discrete systems behave given a certain set of inputs.
+        <br /><br />
+        Automatons can be divided into four main families:
+        <br />
+        1. Finite-State Machine <br />
+        2. Push-down Automata <br />
+        3. Linear-bounded Automata <br />
+        4. Turing Machine
+        <br /><br />
+        A Finite-State machine is the simplest automata, while a Turing machine
+        is the most complex. A Turing machine is also a Finite-State machine,
+        but the inverse may not be true. <br /><br />
+        Automaton: An automaton is an abstract mathematical model of a
+        computational device. It can be thought of as a machine that processes
+        inputs and produces outputs based on a set of rules. Automata can be
+        classified into different types based on their capabilities and
+        structures. The two main types are finite automata and pushdown
+        automata. <br /><br />Finite Automaton: A finite automaton is the
+        simplest form of automaton. It has a finite set of states, and it
+        transitions from one state to another based on its input. It is
+        particularly useful for recognizing patterns in strings and determining
+        whether a given input string belongs to a certain language.
+        <br /><br />Formal Languages: Automata theory is closely tied to the
+        concept of formal languages. A formal language is a set of strings over
+        a given alphabet (a set of symbols). Automata can recognize or generate
+        languages. The study of which languages can be recognized or generated
+        by various types of automata is a fundamental aspect of automata theory.
+        <br /><br />Regular Languages: Finite automata are associated with
+        regular languages. Regular languages are a type of formal language that
+        can be recognized by finite automata. Regular expressions, which are
+        concise ways of representing patterns in strings, are closely connected
+        to regular languages. <br /><br />Context-Free Languages: Pushdown
+        automata are associated with context-free languages. These languages are
+        more complex than regular languages and are used to describe the syntax
+        of programming languages. <br /><br />Applications: Automata theory has
+        practical applications in various fields, including compiler design,
+        natural language processing, and the design and analysis of algorithms.
+        It provides a theoretical foundation for understanding the limits of
+        computation and helps in designing efficient algorithms and systems.
+      </p>
+    </section>
+  </body>
+  <script src="{{url_for('static', filename='javascript/index.js')}}"></script>
+</html>

@@ -1,0 +1,58 @@
+:root {
+  --background-color: #f7fafc;
+  --secondary-color: #219ebc;
+  --tertiary-color: #48cae4;
+}
+
+@font-face {
+  font-family: "SF-Pro-Regular";
+  src: url("/static/assets/SF-Pro-Display-Regular.otf");
+}
+
+@font-face {
+  font-family: "SF-Pro-Medium";
+  src: url("/static/assets/SF-Pro-Display-Medium.otf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* NAVBAR */
+
+.navbar {
+  display: flex;
+  padding: 1rem 5rem 2rem;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 1.2rem;
+}
+
+.nav-list {
+  list-style-type: none;
+}
+
+.nav-list li {
+  display: inline-block;
+  margin: 0 1rem;
+  text-decoration: none;
+  color: var(--secondary-color);
+}
+
+.unactive-link {
+  text-decoration: none;
+  color: var(--secondary-color);
+}
+
+.unactive-link:hover {
+  color: var(--tertiary-color);
+}
+
+.active-link {
+  text-decoration: none;
+  color: var(--tertiary-color);
+}

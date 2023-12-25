@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Automata Theory</title>
+    <link rel="icon" type="image/ico" href="../static/images/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/nav.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/help.css') }}"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">AutoDFA</div>
+      <div class="nav-links">
+        <ul class="nav-list">
+          <li><a class="unactive-link" href="/">Home</a></li>
+          <li>
+            <a class="unactive-link" href="/info">What is Automata Theory?</a>
+          </li>
+          <li><a class="active-link" href="/help">How To Use?</a></li>
+        </ul>
+      </div>
+    </nav>
+    <section class="help-section">
+      <h1>Welcome to the DFA Tutoring Help Section</h1>
+      <br /><br />
+      <h3>Introduction:</h3>
+      <br />
+      Welcome to the DFA (Deterministic Finite Automaton) Generator! This tool
+      allows you to input queries in English and generates the corresponding DFA
+      step by step. Whether you're new to automata theory or a seasoned pro,
+      this guide will walk you through the process.
+      <br /><br />
+      <h3>Important Note:</h3>
+      <br />
+      Enter the finite symbols(character) in single quotes(For Example: 'a')
+      <br /><br />
+      <h3>How to Use:</h3>
+      <br />
+      1. Input Your Query: Start by entering your query in English. For example,
+      you could input something like "String starting with 'a' and ending with
+      'b'." <br />2. Step-by-Step Generation: The tool will guide you through
+      the creation of the DFA, breaking down each step. Follow along to
+      understand how the automaton is constructed. <br />3. Visual
+      Representation: A visual representation of the DFA will be generated
+      simultaneously. This graphical representation helps you see the
+      transitions between states. <br /><br />
+      <h3>Understanding the Steps:</h3>
+      <br />
+      1. Alphabet: The tool identifies the alphabet based on your query. In our
+      example, it would recognize that the alphabet consists of the letters 'a'
+      and 'b.' <br />2. States: The tool determines the states needed for the
+      DFA. It considers the structure of your query and creates states
+      accordingly. <br />3. Transitions: Step by step, the DFA transitions are
+      established. These transitions define how the machine moves from one state
+      to another based on input. <br />4. Final States: The tool identifies the
+      final states, which indicate successful recognition of the specified
+      pattern in your query. <br /><br />
+      <h3>Tips:</h3>
+      <br />
+      1. Be Specific: The more specific your query, the more accurate and
+      focused your DFA will be. Provide clear instructions to get the desired
+      automaton. <br />2. Review Each Step: Take the time to understand each
+      step. This will enhance your understanding of how the DFA corresponds to
+      your query. <br /><br />
+      <h3>Common Queries:</h3>
+      <br />
+      To get you started, here are examples of common queries and the kind of
+      DFAs they generate: <br />
+      1. "String starting with 'a' and ending with 'b'" <br />2. "String
+      containing exactly 2 'a's" <br />3. "String containing even number of
+      'c's" <br /><br />
+      <h3>FAQs:</h3>
+      <br />
+      Have questions? Check out our frequently asked questions section for
+      additional assistance. <br /><br />
+      <h3>Feedback:</h3>
+      <br />
+      We value your feedback! If you encounter any issues or have suggestions
+      for improvement, please let us know. Now, let's start generating DFAs and
+      exploring the fascinating world of automata theory!
+    </section>
+  </body>
+  <script src="{{url_for('static', filename='javascript/index.js')}}"></script>
+</html>

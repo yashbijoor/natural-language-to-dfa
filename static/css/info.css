@@ -1,0 +1,30 @@
+:root {
+  --background-color: #f7fafc;
+  --secondary-color: #219ebc;
+  --tertiary-color: #48cae4;
+}
+
+@font-face {
+  font-family: "SF-Pro-Regular";
+  src: url("/static/assets/SF-Pro-Display-Regular.otf");
+}
+
+@font-face {
+  font-family: "SF-Pro-Medium";
+  src: url("/static/assets/SF-Pro-Display-Medium.otf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background-color);
+  font-family: SF-Pro-Regular, sans-serif;
+}
+
+.main-content {
+  margin: 0rem 5rem 2rem;
+}
