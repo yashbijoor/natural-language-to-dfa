@@ -63,6 +63,8 @@
       <div class="img-wrapper">
         {% for image in imgUrls %}
         <img class="dfa-img" src="{{image}}" alt="" /><br />
+        <h4>{{explanations[loop.index0]}}</h4>
+        <br />
         {% endfor %}
       </div>
     </form>

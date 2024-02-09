@@ -1,0 +1,7 @@
+{
+  "start": "As the string should start with $char$, we have $char$ as the initial transition. Any other value is not accepted",
+  "end": {
+    "step1": "As the string should end with $char$, at $char$ the DFA reaches the final state",
+    "step2": "At $char$ the DFA stays in the current state as it is the final state while other values are sent to the previous state"
+  }
+}
