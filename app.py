@@ -10,7 +10,7 @@ def home():
     try:
         charset = [ch.strip() for ch in (request.form['charset']).split(",")] # Strip whitespaces to obtain charset
         regex, char_dictionary = nlq_to_re(charset, request.form['query']) # Obtain Regular Expression for the query
-        explanations = explanations_lib(char_dictionary)
+        explanations = explanations_lib(char_dictionary, charset) # get stepwise explanations
         dfa, image_list = re_to_dfa(charset, regex) # Get dfa in json and diagrams
         return render_template("index.html", dfaJson = str(dfa.transition_table), imgUrls = image_list, explanations = explanations)
     except:
@@ -18,8 +18,8 @@ def home():
 
 @app.route('/info', methods=['GET'])
 def info():
-    return render_template('info.html')   
+    return render_template('info.html')
 
 @app.route('/help', methods=['GET'])
 def help():
-    return render_template('help.html') 
+    return render_template('help.html')

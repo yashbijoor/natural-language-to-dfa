@@ -1,5 +1,12 @@
 {
-  "start": "As the string should start with $char$, we have $char$ as the initial transition. Any other value is not accepted",
+  "start": {
+    "step1": "As the string should start with $char$, we have $char$ as the initial transition. Any other value is not accepted",
+    "step2": "As all the conditions for the DFA are fulfilled, we can send all the possible transitions (i.e. $char$) to the final state"
+  },
+  "contain": {
+    "step1": "As the string should contain $char$, at $char$, we send the transition to the next state",
+    "step2": "As the string doesn't not have to end with any particular value, at this step the DFA reaches the final state and all possible transitions (i.e. $char$) stay in the same final state"
+  },
   "end": {
     "step1": "As the string should end with $char$, at $char$ the DFA reaches the final state",
     "step2": "At $char$ the DFA stays in the current state as it is the final state while other values are sent to the previous state"
