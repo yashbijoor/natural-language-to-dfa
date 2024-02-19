@@ -34,6 +34,6 @@ class RegexBuilder:
     return self
 
   # To append a specific number of characters
-  def specificNumberOf(self, letter, number):
-    self.regex += letter*number
+  def specificNumberOf(self, letterNumberList):
+    self.regex += int(letterNumberList[0])*letterNumberList[1]
     return self
