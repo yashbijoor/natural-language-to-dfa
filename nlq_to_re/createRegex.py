@@ -1,7 +1,6 @@
 from nlq_to_re import regexBuilder
 
 def construct_regex(charset, char_dictionary):
-    # print(char_dictionary)
     regexOutput = regexBuilder.RegexBuilder()
     if 'start' in char_dictionary: 
         for i in char_dictionary['start']:
@@ -9,25 +8,33 @@ def construct_regex(charset, char_dictionary):
                 temp = i.split('_')
                 regexOutput.specificNumberOf(temp)
             else:
-                regexOutput.oneOfTheCharacters(char_dictionary['start'])
+                regexOutput.exactString(i)
+        regexOutput.oneOfTheCharacters(regexOutput.tempList)
+        regexOutput.compileRegex()
         regexOutput.anyNumberOf(charset)
-        # print(regexOutput)
+        regexOutput.compileRegex()
 
 
     if 'contain' in char_dictionary:
         for ch in char_dictionary['contain']:
-            regexOutput.anyNumberOf(charset).exactString(ch).anyNumberOf(charset)
+            if '_' in ch:
+                temp = ch.split('_')
+                regexOutput.anyNumberOf(charset).exactString(temp[-1]).anyNumberOf(charset)
+        regexOutput.concat(regexOutput.tempList)
+        regexOutput.compileRegex()
+
 
 
     if 'end' in char_dictionary:
-        # print(char_dictionary)
+        regexOutput.anyNumberOf(charset)
+        regexOutput.compileRegex()
         for i in char_dictionary['end']:
             if '_' in i:
                 temp = i.split('_')
-                regexOutput.anyNumberOf(charset).specificNumberOf(temp)
-                
+                regexOutput.specificNumberOf(temp)
             else:
-                regexOutput.anyNumberOf(charset).oneOfTheCharacters(char_dictionary['start'])
-        print(regexOutput)
+                regexOutput.exactString(i)
+        regexOutput.oneOfTheCharacters(regexOutput.tempList)
+        regexOutput.compileRegex()
 
     return regexOutput.regex
