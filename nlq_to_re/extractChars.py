@@ -11,21 +11,21 @@ def convert_words_to_numbers(input_str):
 
   for word in words:
     try:
-            # Try to convert the word to a number
+      # Try to convert the word to a number
       number = w2n.word_to_num(word)
       converted_words.append(str(number))
     except ValueError:
-            # If the word is not a number, keep it unchanged
+      # If the word is not a number, keep it unchanged
       converted_words.append(word)
 
-    # Join the converted words back into a string
+  # Join the converted words back into a string
   result_str = ' '.join(converted_words)
 
   return result_str
 
 
 def extract_chars(nlp_query):
-  wordList = nlp_query.split()
+  wordList = convert_words_to_numbers(nlp_query).split()
   stemmedList = []
   for w in wordList:
     stemmedList.append(ps.stem(w))
@@ -57,23 +57,18 @@ def extract_chars(nlp_query):
   if len(endList) > 1:
     split_dict['end'] = " ".join(endList)
 
-  for i, j in split_dict.items():
-    split_dict[i] = convert_words_to_numbers(j)
-
-
   char_dictionary = {}
   a={}
   b={}
   for i, j in split_dict.items():
     a[i] = re.findall(r"'(.*?)'",j)
     b[i] = re.findall(r"\d+(?:\.\d+)?", j)
-    if len(b[i]) == 0:
-      char_dictionary[i] = a[i]
-    elif len(a[i]) != len(b[i]):
-      raise ValueError("Both lists must have the same length")
-    else:
+    if len(a[i]) != len(b[i]):
+      b[i][len(b[i]):] = ['1']*abs(len(a[i])-len(b[i]))
+
+    try:
       char_dictionary[i] = [f"{x}_{y}" for x, y in zip(b[i], a[i])]
-    
+    except:
+      print("There was an error in extractChars.py")
     
   return char_dictionary
-
