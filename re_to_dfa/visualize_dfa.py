@@ -5,7 +5,7 @@ import base64
 def visualize(dfa):
 	list_of_transitions = []
 	list_of_images = []
-	total_states = list(dfa.transition_table.keys())
+	set_of_states = set()
 	count = 2
 
 	# Making an object to visualize the DFA diagram
@@ -31,11 +31,12 @@ def visualize(dfa):
 			temp_list.append(transition[0])
 			temp_list.append(item[0])
 			temp_list.append(item[1])
+			set_of_states.add(item[1])
 			list_of_transitions.append(temp_list)
-		list_of_states = total_states[:count]
+		list_of_states = list(set_of_states)
 		start_state = dfa.startstate
 
-		if len(list_of_states) == len(dfa.transition_table.keys()):
+		if len(list_of_states) >= len(dfa.transition_table.keys()):
 			list_of_final_states = list(dfa.finalstates)
 		else:
 			list_of_final_states = []

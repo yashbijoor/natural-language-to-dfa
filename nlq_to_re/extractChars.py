@@ -58,17 +58,82 @@ def extract_chars(nlp_query):
     split_dict['end'] = " ".join(endList)
 
   char_dictionary = {}
-  a={}
-  b={}
-  for i, j in split_dict.items():
-    a[i] = re.findall(r"'(.*?)'",j)
-    b[i] = re.findall(r"\d+(?:\.\d+)?", j)
-    if len(a[i]) != len(b[i]):
-      b[i][len(b[i]):] = ['1']*abs(len(a[i])-len(b[i]))
 
-    try:
-      char_dictionary[i] = [f"{x}_{y}" for x, y in zip(b[i], a[i])]
-    except:
-      print("There was an error in extractChars.py")
+  # FOR START CASES
+  if 'start' in split_dict:
+    arr = re.split('and|or|,', split_dict['start'])
+    char_dictionary['start'] = []
+    for st in arr:
+      if 'atleast' in st:
+        num = re.findall(r"\d+(?:\.\d+)?", st)
+        ch = re.findall(r"'(.*?)'",st)
+        num.append('1')
+        char_dictionary['start'].append("atleast" + "_" + num[0] + "_" + ch[0])
+      elif 'atmost' in st:
+        num = re.findall(r"\d+(?:\.\d+)?", st)
+        ch = re.findall(r"'(.*?)'",st)
+        num.append('1')
+        char_dictionary['start'].append("atmost" + "_" + num[0] + "_" + ch[0])
+      else:
+        num = re.findall(r"\d+(?:\.\d+)?", st)
+        ch = re.findall(r"'(.*?)'",st)
+        num.append('1')
+        char_dictionary['start'].append(num[0] + "_" + ch[0])
+  
+  # FOR CONTAIN CASES
+  if 'contain' in split_dict:
+    arr = re.split('and|or|,', split_dict['contain'])
+    char_dictionary['contain'] = []
+    for st in arr:
+      if 'atleast' in st:
+        num = re.findall(r"\d+(?:\.\d+)?", st)
+        ch = re.findall(r"'(.*?)'",st)
+        num.append('1')
+        char_dictionary['contain'].append("atleast" + "_" + num[0] + "_" + ch[0])
+      elif 'atmost' in st:
+        num = re.findall(r"\d+(?:\.\d+)?", st)
+        ch = re.findall(r"'(.*?)'",st)
+        num.append('1')
+        char_dictionary['contain'].append("atmost" + "_" + num[0] + "_" + ch[0])
+      else:
+        num = re.findall(r"\d+(?:\.\d+)?", st)
+        ch = re.findall(r"'(.*?)'",st)
+        num.append('1')
+        char_dictionary['contain'].append(num[0] + "_" + ch[0])
+
+  # FOR END CASES
+  if 'end' in split_dict:
+    arr = re.split('and|or|,', split_dict['end'])
+    char_dictionary['end'] = []
+    for st in arr:
+      if 'atleast' in st:
+        num = re.findall(r"\d+(?:\.\d+)?", st)
+        ch = re.findall(r"'(.*?)'",st)
+        num.append('1')
+        char_dictionary['end'].append("atleast" + "_" + num[0] + "_" + ch[0])
+      elif 'atmost' in st:
+        num = re.findall(r"\d+(?:\.\d+)?", st)
+        ch = re.findall(r"'(.*?)'",st)
+        num.append('1')
+        char_dictionary['end'].append("atmost" + "_" + num[0] + "_" + ch[0])
+      else:
+        num = re.findall(r"\d+(?:\.\d+)?", st)
+        ch = re.findall(r"'(.*?)'",st)
+        num.append('1')
+        char_dictionary['end'].append(num[0] + "_" + ch[0])
+
+
+  # a={}
+  # b={}
+  # for i, j in split_dict.items():
+  #   a[i] = re.findall(r"'(.*?)'",j)
+  #   b[i] = re.findall(r"\d+(?:\.\d+)?", j)
+  #   if len(a[i]) != len(b[i]):
+  #     b[i][len(b[i]):] = ['1']*abs(len(a[i])-len(b[i]))
+
+  #   try:
+  #     char_dictionary[i] = [f"{x}_{y}" for x, y in zip(b[i], a[i])]
+  #   except:
+  #     print("There was an error in extractChars.py")
     
   return char_dictionary
