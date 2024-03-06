@@ -61,3 +61,12 @@ class RegexBuilder:
       output += "|" + "(" + letterNumberList[1] * i + ")"
     self.tempList.append("(" + output + ")")
     return self
+
+  def even(self, letter):
+    self.tempList.append("(" + letter*2 + ")*")
+  
+  def odd(self, letter):
+    self.tempList.append("(" + letter*2 + ")*" + letter)
+
+  def loop(self, letter):
+    self.tempList.append("(" + letter + ")*")

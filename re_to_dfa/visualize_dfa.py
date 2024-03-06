@@ -21,6 +21,8 @@ def visualize(dfa):
 	graph.node('')
 	graph.edge('', 's0')
 
+	set_of_states.add('s0') # Adding s0 to the set of states
+
 	image_data = graph.pipe(format='png')
 	list_of_images.append("data:image/png;base64," + base64.b64encode(image_data).decode('utf-8'))
 
@@ -35,6 +37,7 @@ def visualize(dfa):
 			list_of_transitions.append(temp_list)
 		list_of_states = list(set_of_states)
 		start_state = dfa.startstate
+		
 
 		if len(list_of_states) >= len(dfa.transition_table.keys()):
 			list_of_final_states = list(dfa.finalstates)

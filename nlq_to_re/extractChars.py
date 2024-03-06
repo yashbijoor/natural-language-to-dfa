@@ -74,6 +74,12 @@ def extract_chars(nlp_query):
         ch = re.findall(r"'(.*?)'",st)
         num.append('1')
         char_dictionary['start'].append("atmost" + "_" + num[0] + "_" + ch[0])
+      elif 'even' in st:
+        ch = re.findall(r"'(.*?)'",st)
+        char_dictionary['start'].append("even_" + ch[0])
+      elif 'odd' in st:
+        ch = re.findall(r"'(.*?)'",st)
+        char_dictionary['start'].append("odd_" + ch[0])
       else:
         num = re.findall(r"\d+(?:\.\d+)?", st)
         ch = re.findall(r"'(.*?)'",st)
@@ -95,6 +101,12 @@ def extract_chars(nlp_query):
         ch = re.findall(r"'(.*?)'",st)
         num.append('1')
         char_dictionary['contain'].append("atmost" + "_" + num[0] + "_" + ch[0])
+      elif 'even' in st:
+        ch = re.findall(r"'(.*?)'",st)
+        char_dictionary['contain'].append("even_" + ch[0])
+      elif 'odd' in st:
+        ch = re.findall(r"'(.*?)'",st)
+        char_dictionary['contain'].append("odd_" + ch[0])
       else:
         num = re.findall(r"\d+(?:\.\d+)?", st)
         ch = re.findall(r"'(.*?)'",st)
@@ -116,6 +128,12 @@ def extract_chars(nlp_query):
         ch = re.findall(r"'(.*?)'",st)
         num.append('1')
         char_dictionary['end'].append("atmost" + "_" + num[0] + "_" + ch[0])
+      elif 'even' in st:
+        ch = re.findall(r"'(.*?)'",st)
+        char_dictionary['end'].append("even_" + ch[0])
+      elif 'odd' in st:
+        ch = re.findall(r"'(.*?)'",st)
+        char_dictionary['end'].append("odd_" + ch[0])
       else:
         num = re.findall(r"\d+(?:\.\d+)?", st)
         ch = re.findall(r"'(.*?)'",st)
@@ -135,5 +153,4 @@ def extract_chars(nlp_query):
   #     char_dictionary[i] = [f"{x}_{y}" for x, y in zip(b[i], a[i])]
   #   except:
   #     print("There was an error in extractChars.py")
-    
   return char_dictionary
