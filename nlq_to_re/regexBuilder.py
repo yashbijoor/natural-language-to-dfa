@@ -15,6 +15,7 @@ class RegexBuilder:
     self.regex += self.tempList[-1]
     return self
 
+ 
   # To print the regex
   def printRegex(self):
     print(self.regex)
@@ -38,6 +39,11 @@ class RegexBuilder:
   def oneOfTheCharacters(self, letterList):
     self.tempList.append("(" + "|".join(letterList) + ")")
     return self
+  
+  def oneOfTheCharactersWithEpsiolon(self, letterList):
+    self.tempList.append("(" + "|".join(letterList) + "|$"+")")
+    return self
+
 
   # To choose any number of characters in any order from a list. If letterList is ['a','b','c'] then the output will be (a*b*c*)*
   def anyNumberOf(self, letterList):

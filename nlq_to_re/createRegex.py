@@ -20,12 +20,16 @@ def construct_regex(charset, char_dictionary):
                 temp = i.split('_')
                 regexOutput.even(temp[-1])
                 charset_modified.append(temp[-1])
+                
                 case_no = 3
+                
             elif 'odd' in i:
                 temp = i.split('_')
                 regexOutput.odd(temp[-1])
                 charset_modified.append(temp[-1])
+                
                 case_no = 4
+                
             else:
                 temp = i.split('_')
                 regexOutput.specificNumberOf(temp[-2:])
@@ -37,11 +41,32 @@ def construct_regex(charset, char_dictionary):
         # If case no = 1, use charset otherwise use charset - modified_charset
         if case_no == 1:
             regexOutput.anyNumberOf(charset)
-        else:
-            regexOutput.anyNumberOf(list(set(charset) - set(charset_modified)))
-        regexOutput.compileRegex() # Compile the regex
-        regexOutput.clearTempList() # Clear the temp list variable
+            regexOutput.compileRegex() # Compile the regex
+            regexOutput.clearTempList() # Clear the temp list variable
 
+    
+        if case_no == 4 or case_no == 3:
+            temp =  regexOutput.regex
+            regexOutput.oneOfTheCharacters(list(set(charset) - set(charset_modified)))
+            regexOutput.compileRegex()
+            regexOutput.clearTempList()
+            regexOutput.anyNumberOf(list(set(charset) - set(charset_modified)))
+            regexOutput.compileRegex()
+            regexOutput.clearTempList()
+            regexOutput.anyNumberOf(charset)
+            regexOutput.regex =  temp + "|("+regexOutput.regex 
+            regexOutput.compileRegex() # Compile the regex
+            regexOutput.regex += ")" #This is necessary because it help to segregate the final part of the OR operation
+            regexOutput.clearTempList() # Clear the temp list variable
+
+        else:
+
+            regexOutput.anyNumberOf(list(set(charset) - set(charset_modified)))
+            regexOutput.compileRegex() # Compile the regex
+            regexOutput.clearTempList() # Clear the temp list variable
+        
+        
+        
 
     if 'contain' in char_dictionary:
         case_no = 0
@@ -62,6 +87,7 @@ def construct_regex(charset, char_dictionary):
                 charset_modified.append(temp[-1])
                 case_no = 3
                 ch_even_odd = temp[-1]
+                # regexOutput.anyNumberOf(charset)
             elif 'odd' in ch:
                 temp = ch.split('_')
                 charset_modified.append(temp[-1])
@@ -81,14 +107,21 @@ def construct_regex(charset, char_dictionary):
             regexOutput.loop(regexOutput.tempList[-1])
             regexOutput.compileRegex()
             regexOutput.clearTempList()
+            # regexOutput.anyNumberOfOrdered(charset)
         elif case_no == 4: # This is the case for 'ODD'
-            # Even cases will come like: ((b*c*)*.a.(b*c*)*.a.(b*c*)*)*a
+            # Even cases will come like: (b*c*)*.a.((b*c*)*.a.(b*c*)*.a)*(b*c*)*
             # This makes sure that only odd no. of 'a's are present
-            regexOutput.anyNumberOf(list(set(charset) - set(charset_modified))).exactString(ch_even_odd).anyNumberOf(list(set(charset) - set(charset_modified))).exactString(ch_even_odd).anyNumberOf(list(set(charset) - set(charset_modified)))
+            # regexOutput.anyNumberOf(list(set(charset) - set(charset_modified))).exactString(ch_even_odd).anyNumberOf(list(set(charset) - set(charset_modified))).exactString(ch_even_odd).anyNumberOf(list(set(charset) - set(charset_modified)))
+            regexOutput.anyNumberOf(list(set(charset) - set(charset_modified))).exactString(ch_even_odd)
+            regexOutput.concat(regexOutput.tempList)
+            regexOutput.compileRegex()
+            regexOutput.clearTempList()
+            regexOutput.anyNumberOf(list(set(charset) - set(charset_modified))).exactString(ch_even_odd).anyNumberOf(list(set(charset) - set(charset_modified))).exactString(ch_even_odd)
             regexOutput.concat(regexOutput.tempList)
             regexOutput.loop(regexOutput.tempList[-1])
-            regexOutput.exactString(ch_even_odd)
-            regexOutput.concat(regexOutput.tempList[-2:])
+            regexOutput.compileRegex()
+            regexOutput.clearTempList()
+            regexOutput.anyNumberOf(list(set(charset) - set(charset_modified)))
             regexOutput.compileRegex()
             regexOutput.clearTempList()
         else:
@@ -130,6 +163,7 @@ def construct_regex(charset, char_dictionary):
         # If case no = 1, use charset otherwise use charset - modified_charset
         if case_no == 1:
             regexOutput.anyNumberOf(charset)
+     
         else:
             regexOutput.anyNumberOf(list(set(charset) - set(charset_modified)))
         regexOutput.compileRegex() # Compile the regex
