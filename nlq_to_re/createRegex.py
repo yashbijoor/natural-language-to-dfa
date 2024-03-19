@@ -163,13 +163,36 @@ def construct_regex(charset, char_dictionary):
         # If case no = 1, use charset otherwise use charset - modified_charset
         if case_no == 1:
             regexOutput.anyNumberOf(charset)
-     
-        else:
+
+        elif case_no == 3 or case_no == 4:
+            regexOutput.compileRegex() # Compile the regex
+            temp = regexOutput.regex
+            regexOutput.regex += '|('
+            
+            regexOutput.anyNumberOf(charset)
+            regexOutput.compileRegex()
+            regexOutput.clearTempList()
+            
+            regexOutput.oneOfTheCharacters(list(set(charset) - set(charset_modified)))
+            regexOutput.compileRegex()
+            regexOutput.clearTempList()
+            
             regexOutput.anyNumberOf(list(set(charset) - set(charset_modified)))
-        regexOutput.compileRegex() # Compile the regex
-        regexOutput.clearTempListPartially(1)  # Clear only the last 1 element of tempList. The number passed is the number of elements to be cleared from the end of the list
-        regexOutput.oneOfTheCharacters(regexOutput.tempList) # This is to say that all the characters are 'OR' by default
-        regexOutput.compileRegex() # Compile the regex
-        regexOutput.clearTempList() # Clear the tempList variable
+            regexOutput.compileRegex()
+            regexOutput.clearTempList()
+            regexOutput.regex += temp
+            regexOutput.regex += ')'
+
+            # print(regexOutput.regex) 
+            
+            
+        else:
+            print('second')
+            regexOutput.anyNumberOf(list(set(charset) - set(charset_modified)))
+            regexOutput.compileRegex() # Compile the regex
+            regexOutput.clearTempListPartially(1)  # Clear only the last 1 element of tempList. The number passed is the number of elements to be cleared from the end of the list
+            regexOutput.oneOfTheCharacters(regexOutput.tempList) # This is to say that all the characters are 'OR' by default
+            regexOutput.compileRegex() # Compile the regex
+            regexOutput.clearTempList() # Clear the tempList variable
 
     return regexOutput.regex
