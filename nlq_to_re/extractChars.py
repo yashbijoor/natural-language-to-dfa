@@ -83,7 +83,7 @@ def extract_chars(nlp_query):
       else:
         num = re.findall(r"\d+(?:\.\d+)?", st)
         ch = re.findall(r"'(.*?)'",st)
-        num.append('1')
+        num.append('atleast_1')
         char_dictionary['start'].append(num[0] + "_" + ch[0])
   
   # FOR CONTAIN CASES
@@ -110,7 +110,7 @@ def extract_chars(nlp_query):
       else:
         num = re.findall(r"\d+(?:\.\d+)?", st)
         ch = re.findall(r"'(.*?)'",st)
-        num.append('1')
+        num.append('atleast_1')
         char_dictionary['contain'].append(num[0] + "_" + ch[0])
 
   # FOR END CASES
@@ -137,7 +137,7 @@ def extract_chars(nlp_query):
       else:
         num = re.findall(r"\d+(?:\.\d+)?", st)
         ch = re.findall(r"'(.*?)'",st)
-        num.append('1')
+        num.append('atleast_1')
         char_dictionary['end'].append(num[0] + "_" + ch[0])
 
 
