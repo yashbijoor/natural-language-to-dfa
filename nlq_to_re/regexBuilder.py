@@ -81,3 +81,6 @@ class RegexBuilder:
   # Just adds * to the letter. If letter is 'a' the returns (a)*
   def loop(self, letter):
     self.tempList.append("(" + letter + ")*")
+
+  def loopAtleastOnce(self, letter):
+    self.tempList.append("((" + letter + ")+)")
